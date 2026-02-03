@@ -170,17 +170,29 @@
     const yesBtn = document.getElementById("yesBtn");
     const music = document.getElementById("bgMusic");
 
-    // NO button moves but stays inside the screen
+    // Set initial NO button position
+    noBtn.style.left = "50px";
+    noBtn.style.top = "200px";
+
+    // NO button moves INSIDE screen bounds only
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random()*(window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random()*(window.innerHeight - noBtn.offsetHeight);
+      const padding = 15; // safe margin from edges
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const maxX = window.innerWidth - btnWidth - padding;
+      const maxY = window.innerHeight - btnHeight - padding;
+
+      const x = Math.random() * (maxX - padding) + padding;
+      const y = Math.random() * (maxY - padding) + padding;
+
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     });
 
     // YES button opens love page + plays music
     yesBtn.addEventListener("click", () => {
-      music.play();  // start music
+      music.play();
       document.body.innerHTML = `
         <div style="
           height:100vh;
