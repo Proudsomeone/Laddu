@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laddu ✨ Valentine Proposal</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", cursive;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #ffe6f0, #ffd6eb);
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.8;
+      animation: twinkle 3s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.8); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* Main Card */
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: 35px;
+      padding: 35px 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 430px;
+      box-shadow: 0px 10px 35px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+      border: 4px solid rgba(255, 182, 213, 0.6);
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    /* Buttons */
+    button {
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 18px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background: #ff5c93;
+      color: white;
+      box-shadow: 0px 5px 15px rgba(255, 92, 147, 0.45);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #444;
+      color: white;
+      position: absolute;
+    }
+
+    /* Stickers */
+    .stickers {
+      font-size: 50px;
+      margin-top: 18px;
+    }
+
+    /* Mobile Friendly */
+    @media(max-width:600px) {
+      h1 { font-size: 24px; }
+      button { width: 80%; font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sparkles Generator -->
+  <script>
+    for(let i=0; i<25; i++){
+      let s = document.createElement("div");
+      s.classList.add("sparkle");
+      s.style.left = Math.random()*100 + "vw";
+      s.style.top = Math.random()*100 + "vh";
+      s.style.animationDuration = (Math.random()*2+2)+"s";
+      document.body.appendChild(s);
+    }
+  </script>
+
+  <!-- Floating Hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 250);
+  </script>
+
+
+  <!-- Proposal Card -->
+  <div class="card">
+    <h1>💘 Laddu ✨ Will You Be My Valentine? 💘</h1>
+
+    <p>
+      You are my sweetest dream,<br>
+      my heart’s favorite melody 🌸
+    </p>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 💔</button>
+
+    <div class="stickers">
+      🧸🌹💌🍫🎀✨
+    </div>
+  </div>
+
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    // No Button Runs Away
+    noBtn.addEventListener("mouseover", () => {
+      let x = Math.random() * (window.innerWidth - 120);
+      let y = Math.random() * (window.innerHeight - 60);
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // Yes Opens Love Page
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          flex-direction:column;
+          text-align:center;
+          background:linear-gradient(to bottom,#ffe6f0,#ffd6eb);
+          font-family:Comic Sans MS;
+          padding:20px;
+        ">
+
+          <h1 style="color:#ff4d88;font-size:50px;">
+            Yayyy Laddu ✨💖
+          </h1>
+
+          <p style="font-size:22px;color:#444;max-width:500px;">
+            You just made my heart the happiest place 🌸<br>
+            I Love You So Much 😘💞
+          </p>
+
+          <div style="font-size:75px;margin:25px;">
+            🧸💌🌹🎀🍫✨💖
+          </div>
+
+          <h2 style="color:#ff4d88;">
+            Forever Yours ❤️
+          </h2>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
